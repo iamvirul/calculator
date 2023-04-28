@@ -1,6 +1,5 @@
 
 import java.awt.BorderLayout;
-import static java.awt.BorderLayout.NORTH;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
@@ -60,10 +59,14 @@ class cal implements ActionListener {
         MenuItem mi4 = new MenuItem("Tools");
         MenuItem mi5 = new MenuItem("Windows");
         MenuItem mi6 = new MenuItem("History");
+        MenuItem mi7 = new MenuItem("Dark");
+        MenuItem mi8 = new MenuItem("Light");
 
-        Menu m1 = new Menu("Run");
+
+        Menu m1 = new Menu("Viwe");
         Menu m2 = new Menu("Edit");
-        Menu m3 = new Menu("File");
+        Menu m3 = new Menu("Help");
+        Menu m4 = new Menu("Theme");
 
         m1.add(mi1);
         m1.add(mi2);
@@ -74,9 +77,13 @@ class cal implements ActionListener {
         m3.add(mi6);
         m3.add(mi5);
 
+        m4.add(mi7);
+        m4.add(mi8);
+        
         mbar.add(m1);
         mbar.add(m2);
         mbar.add(m3);
+        mbar.add(m4);
 
         f1.setMenuBar(mbar);
 
@@ -138,8 +145,7 @@ class cal implements ActionListener {
         b10.setForeground(c2);
         b17.setForeground(c1);
         b16.setForeground(c1);
-
-//        b1.setForeground(Color.red);
+        
         tf = new TextField(12);
 
         Font font2 = new Font("Cambria Math", Font.BOLD, 50);
@@ -248,7 +254,12 @@ class cal implements ActionListener {
             op = b15.getLabel();
         } else if (o.equals(b16)) {
             tf.setText("");
-        } else if (o.equals(b17)) {
+        }else if(o.equals(b18)){
+            fv = tf.getText();
+            tf.setText("");
+            op = b18.getLabel();
+
+        }else if (o.equals(b17)) {
             sv = tf.getText();
             fdv = Double.parseDouble(fv);
             sdv = Double.parseDouble(sv);
@@ -265,7 +276,13 @@ class cal implements ActionListener {
             } else if (op.equals("*")) {
                 tot = fdv * sdv;
                 tf.setText(tot + "");
+            } else if (op.equals("√")){
+                fv = tf.getText();
+                fdv = Double.parseDouble(fv);
+                tot = Math.sqrt(fdv);
+                tf.setText(Double.toString(tot));
             }
+            
         }
 
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
